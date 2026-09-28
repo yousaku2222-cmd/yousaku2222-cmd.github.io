@@ -1,3 +1,27 @@
 {
-  "notices": []
+  "notices": [
+    {
+      "id": "2026-09-28-ad-pause",
+      "date": "2026-09-28",
+      "end": "2026-10-28T00:00:00+09:00",
+      "title": {
+        "ja": "広告の一時停止について",
+        "en": "Ads are temporarily paused",
+        "ko": "광고 일시 중지 안내",
+        "zh": "廣告暫停說明",
+        "zh_Hant": "廣告暫停說明",
+        "id": "Iklan dijeda sementara",
+        "th": "แจ้งการหยุดแสดงโฆษณาชั่วคราว"
+      },
+      "body": {
+        "ja": "現在、アプリ内の広告の表示を一時的に停止しています（10月下旬ごろまで）。\nこの間、トーク統計とダッシュボードは、広告なしで何度でもご利用いただけます。\n着せ替えテーマとアイコンの解放は、広告の再開後にご利用ください。",
+        "en": "Ads in the app are temporarily paused (until around late October).\nDuring this time, you can open Chat stats and the Dashboard as often as you like without watching an ad.\nThemes and icons can be unlocked again once ads resume.",
+        "ko": "현재 앱 내 광고 표시를 일시적으로 중지하고 있습니다(10월 하순경까지).\n이 기간에는 대화 통계와 대시보드를 광고 없이 몇 번이든 이용하실 수 있습니다.\n테마와 아이콘 잠금 해제는 광고가 다시 시작된 후 이용해 주세요.",
+        "zh": "目前暫停顯示應用程式內的廣告(預計至10月下旬左右)。\n在此期間,聊天統計與儀表板無需觀看廣告即可無限次使用。\n主題與圖示的解鎖,請待廣告恢復後再使用。",
+        "zh_Hant": "目前暫停顯示應用程式內的廣告(預計至10月下旬左右)。\n在此期間,聊天統計與儀表板無需觀看廣告即可無限次使用。\n主題與圖示的解鎖,請待廣告恢復後再使用。",
+        "id": "Saat ini iklan di aplikasi dijeda sementara (hingga sekitar akhir Oktober).\nSelama periode ini, Statistik obrolan dan Dasbor dapat digunakan berkali-kali tanpa menonton iklan.\nTema dan ikon dapat dibuka kembali setelah iklan aktif lagi.",
+        "th": "ขณะนี้เราหยุดแสดงโฆษณาในแอปชั่วคราว (จนถึงประมาณปลายเดือนตุลาคม)\nในช่วงนี้ คุณสามารถเปิดสถิติแชทและแดชบอร์ดได้ไม่จำกัดโดยไม่ต้องดูโฆษณา\nการปลดล็อกธีมและไอคอนจะใช้ได้อีกครั้งเมื่อโฆษณากลับมา"
+      }
+    }
+  ]
 }
