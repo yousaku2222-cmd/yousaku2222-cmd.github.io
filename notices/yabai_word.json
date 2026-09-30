@@ -1,9 +1,26 @@
 {
   "notices": [
     {
+      "id": "2026-10-01-released-1.0.3",
+      "date": "2026-10-01",
+      "title": {
+        "en": "Version 1.0.3 is here",
+        "ja": "バージョン1.0.3を公開しました"
+      },
+      "body": {
+        "en": "We added 36 new slang illustrations (No. 85 to 120).\nFrom this version, illustrations come in four art styles: colored pencil, neon, bold pop poster and retro Showa-era manga. Look for them in Today's Slang and the gallery.",
+        "ja": "スラングのイラストを36枚（No.85〜120）追加しました。\n今回から、色鉛筆・ネオン・ポップなポスター・昭和レトロ劇画の4つの絵柄でお届けします。今日のスラングやギャラリーで見てみてください。"
+      },
+      "minVersion": "1.0.3",
+      "popup": true
+    },
+    {
       "id": "2026-09-30-update-1.0.3",
       "date": "2026-09-30",
-      "title": { "en": "A big update is on the way", "ja": "近日アップデートのお知らせ" },
+      "title": {
+        "en": "A big update is on the way",
+        "ja": "近日アップデートのお知らせ"
+      },
       "body": {
         "en": "Version 1.0.3 is coming soon with 36 new slang illustrations.\nFrom this update, illustrations come in four art styles: colored pencil, neon, bold pop poster and retro Showa-era manga.\nPlease update the app once it appears in the store.",
         "ja": "近日、バージョン1.0.3を公開します。スラングのイラストが36枚増えます。\n今回から、色鉛筆・ネオン・ポップなポスター・昭和レトロ劇画の4つの絵柄でお届けします。\nストアに届いたら、アプリを更新してください。"
