@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>術牌 プライバシーポリシー</title>
+<style>
+  :root { color-scheme: dark light; }
+  body {
+    margin: 0 auto;
+    max-width: 44rem;
+    padding: 2.5rem 1.25rem 4rem;
+    font-family: -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, system-ui, sans-serif;
+    line-height: 1.85;
+    color: #F1E6D2;
+    background: #2B2119;
+  }
+  h1 { font-size: 1.6rem; line-height: 1.35; margin: 0 0 .25rem; }
+  h2 { font-size: 1.15rem; margin: 2.2rem 0 .6rem; color: #E8C27A; }
+  h3 { font-size: 1rem; margin: 1.4rem 0 .4rem; }
+  .meta { color: #B8A88E; font-size: .9rem; margin-bottom: 2rem; }
+  a { color: #E8C27A; }
+  ul { padding-left: 1.4rem; }
+  footer { margin-top: 3rem; color: #B8A88E; font-size: .85rem; }
+  @media (prefers-color-scheme: light) { body { color: #2B2119; background: #FAF5EC; } h2 { color: #8A5A12; } a { color: #8A5A12; } }
+</style>
+</head>
+<body>
+<h1>術牌（じゅつはい）プライバシーポリシー</h1>
+<p class="meta">制定日：2026年9月30日 ／ 最終更新日：2026年9月30日</p>
+
+<p>「術牌」（以下「本アプリ」）は、個人開発者 溝上 優作（以下「開発者」）が提供するテーブルゲームアプリです。本ポリシーでは、本アプリが扱う情報とその使い道を説明します。</p>
+
+<h2>1. 端末の中だけに保存する情報</h2>
+<p>次の情報は、お使いの端末の中に保存します。アカウント連携をしていなければ、開発者には送りません（連携した場合は「3. アカウント連携」のとおり保存します）。アプリを削除すると端末からは消えます。</p>
+<ul>
+  <li>CPU対戦の途中経過、対局数、1位の回数</li>
+  <li>段位、文の残高、ショップで手に入れた品、選んでいる見た目</li>
+  <li>対局ルールの設定、チュートリアルの進み具合、音の設定、オンライン対戦で使う名前</li>
+  <li>お知らせの既読</li>
+</ul>
+
+<h2>2. オンライン対戦で扱う情報（Google Firebase）</h2>
+<p>ランク戦と友達との対戦には Google の Firebase（Authentication・Cloud Firestore）を使います。オンライン対戦を始めたときにだけ、次の情報をサーバーに保存します。</p>
+<ul>
+  <li><strong>匿名のユーザーID</strong>：Firebase の匿名ログインで自動的に作られる、個人を特定しないIDです。メールアドレスや電話番号の登録はありません。</li>
+  <li><strong>あなたが入力した名前と、選んだキャラ</strong>：同じ部屋の相手の画面に表示されます。</li>
+  <li><strong>部屋と対局の記録</strong>：人数、対局ルール、合言葉、配られた牌、出した牌、持ち時間、結果、日時。</li>
+</ul>
+<p>名前には、不適切な言葉を使えないようにしています。また、相手の名前に不適切な言葉が含まれている場合は、表示を置き換えます。</p>
+
+<h2>3. アカウント連携（Apple・Google）</h2>
+<p>設定の「アカウント」から Google（iPhone では Apple も）のアカウントと連携すると、機種変更などのあとにデータを引き継げるよう、次の情報を Firebase に保存します。連携しなければ保存しません。</p>
+<ul>
+  <li><strong>連携したアカウントの情報</strong>：Firebase Authentication が受け取る、アカウントの識別子と、Apple・Google から提供されるメールアドレス（Apple の「メールを非公開」を選んだ場合は中継用のアドレス）。</li>
+  <li><strong>保存データ</strong>：段位、文の残高、ショップで手に入れた品、対局数などの記録、オンライン対戦の名前、CPU対戦の人数の設定。</li>
+</ul>
+<p>アプリの設定から、いつでもアカウントと保存データを削除できます。</p>
+
+<h2>4. 文の購入（RevenueCat）</h2>
+<p>文の購入は App Store または Google Play で行われ、購入の確認に RevenueCat, Inc. のサービスを使います。支払い情報（クレジットカード番号など）を開発者や RevenueCat が受け取ることはありません。RevenueCat には、購入の記録（商品、日時、取引ID）と、利用者を区別するためのID（アカウント連携中は Firebase の匿名でないID）が送られます。詳しくは RevenueCat のプライバシーポリシー（<a href="https://www.revenuecat.com/privacy">https://www.revenuecat.com/privacy</a>）をご覧ください。</p>
+
+<h2>5. 広告（Google AdMob）</h2>
+<p>本アプリは、ご自身で選んだときにだけ見られる動画広告（リワード広告）を Google AdMob で表示します。AdMob は、広告の配信と効果測定のために、広告ID（iOS の IDFA / Android の広告ID）、端末の情報、IPアドレスから推定したおおよその地域などを収集することがあります。</p>
+<ul>
+  <li>iOS で「App からのトラッキング要求」を許可しなかった場合、広告IDは使われず、パーソナライズされていない広告が表示されます。</li>
+  <li>欧州経済領域（EEA）・英国などでは、Google の同意管理（UMP）により、広告に関する同意を確認します。</li>
+  <li>詳しくは Google のプライバシーポリシー（<a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a>）と、Google のサービスを使うサイトやアプリから収集した情報の使用（<a href="https://policies.google.com/technologies/partner-sites">https://policies.google.com/technologies/partner-sites</a>）をご覧ください。</li>
+</ul>
+
+<h2>6. 運営からのお知らせ</h2>
+<p>アプリの起動時に、開発者が GitHub Pages に掲載したお知らせを読み込みます。このとき個人を特定する情報は送りませんが、通信の仕組み上、GitHub, Inc. にIPアドレスなどの接続情報が届きます。</p>
+
+<h2>7. 利用目的</h2>
+<ul>
+  <li>オンライン対戦の相手探し、対局の進行、持ち時間の管理</li>
+  <li>同じ部屋の相手への名前・キャラの表示</li>
+  <li>アカウント連携によるデータの保存と引き継ぎ</li>
+  <li>文の購入の確認と付与</li>
+  <li>広告の表示</li>
+  <li>お知らせの配信</li>
+</ul>
+<p>上記以外の目的には使いません。法令に基づく場合を除き、第三者に提供しません。</p>
+
+<h2>8. 情報の削除</h2>
+<p>端末内の情報は、アプリを削除すると消えます。連携したアカウントと保存データは、設定の「アカウント」→「アカウントを削除」で削除できます。オンライン対戦でサーバーに保存した情報の削除を希望される場合は、下記の連絡先までご連絡ください。</p>
+
+<h2>9. お子さまの利用</h2>
+<p>本アプリは13歳未満のお子さまを対象としていません。</p>
+
+<h2>10. 本ポリシーの変更</h2>
+<p>本ポリシーは、予告なく変更することがあります。変更後の内容は、このページに掲載した時点から効力を持ちます。</p>
+
+<h2>11. お問い合わせ</h2>
+<ul>
+  <li>開発者：溝上 優作</li>
+  <li>メール：<a href="mailto:yousaku2222@gmail.com">yousaku2222@gmail.com</a></li>
+</ul>
+</body>
+</html>

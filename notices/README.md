@@ -11,6 +11,7 @@
 | 16タイプ診断 | `mbti.json` | 日本語固定 |
 | Yabai Word | `yabai_word.json` | 英語固定（`en` が無ければ `ja`） |
 | 軍帥儀 | `gunsuigi.json` | 日本語固定 |
+| 術牌 | `jutsufuda.json` | 日本語固定 |
 
 ## 書式
 
