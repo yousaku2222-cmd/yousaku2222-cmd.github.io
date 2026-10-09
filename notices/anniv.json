@@ -1,6 +1,25 @@
 {
   "notices": [
     {
+      "id": "2026-10-09-promo-talk-saver-android",
+      "date": "2026-10-09",
+      "title": {
+        "ja": "LINEのトークを保存できるアプリ「トーク保存」"
+      },
+      "body": {
+        "ja": "大切なLINEのトークを保存して、あとから検索・見返しができます。\n同じ開発者が作っているアプリです。よければ使ってみてください。"
+      },
+      "start": "2026-10-09T00:00:00+09:00",
+      "end": "2026-10-23T00:00:00+09:00",
+      "platforms": [
+        "android"
+      ],
+      "urlLabel": {
+        "ja": "Google Playで見る"
+      },
+      "url": "https://play.google.com/store/apps/details?id=com.yousaku.line_talk_saver"
+    },
+    {
       "id": "2026-10-06-released-1.1.0",
       "date": "2026-10-06",
       "start": "2026-10-06T00:00:00+09:00",

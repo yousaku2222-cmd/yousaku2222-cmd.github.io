@@ -1,6 +1,66 @@
 {
   "notices": [
     {
+      "id": "2026-10-16-promo-yabai-word-ios",
+      "date": "2026-10-16",
+      "title": {
+        "ja": "日本語スラングが学べる「Yabai Word」",
+        "en": "Learn Japanese slang with \"Yabai Word\""
+      },
+      "body": {
+        "ja": "「やばい」「エモい」など、いま使われている日本語スラングの意味と使い方をイラストとクイズで学べます（アプリの画面は英語です）。\n同じ開発者が作っているアプリです。",
+        "en": "Learn real Japanese slang like \"yabai\" and \"emoi\" with illustrations and quizzes.\nMade by the same developer as this app."
+      },
+      "start": "2026-10-16T00:00:00+09:00",
+      "end": "2026-10-30T00:00:00+09:00",
+      "platforms": [
+        "ios"
+      ],
+      "url": "https://apps.apple.com/jp/app/id6811827247",
+      "urlLabel": {
+        "ja": "App Storeで見る",
+        "en": "View on the App Store"
+      }
+    },
+    {
+      "id": "2026-10-09-promo-mbti-ios",
+      "date": "2026-10-09",
+      "title": {
+        "ja": "性格診断アプリ「なんか変ないきもの16タイプ診断」"
+      },
+      "body": {
+        "ja": "ゆるい生き物たちで性格を16タイプに診断。相性や向いている仕事も見られます。\n同じ開発者が作っているアプリです。"
+      },
+      "start": "2026-10-09T00:00:00+09:00",
+      "end": "2026-10-23T00:00:00+09:00",
+      "platforms": [
+        "ios"
+      ],
+      "urlLabel": {
+        "ja": "App Storeで見る"
+      },
+      "url": "https://apps.apple.com/jp/app/id6810761224"
+    },
+    {
+      "id": "2026-10-09-promo-anniv-android",
+      "date": "2026-10-09",
+      "title": {
+        "ja": "記念日カウントダウン「Anniv」"
+      },
+      "body": {
+        "ja": "記念日や誕生日まであと何日かを、ホーム画面でひと目で確認できます。\n同じ開発者が作っているアプリです。"
+      },
+      "start": "2026-10-09T00:00:00+09:00",
+      "end": "2026-10-23T00:00:00+09:00",
+      "platforms": [
+        "android"
+      ],
+      "urlLabel": {
+        "ja": "Google Playで見る"
+      },
+      "url": "https://play.google.com/store/apps/details?id=com.annivapp.anniv"
+    },
+    {
       "id": "2026-09-28-ad-pause",
       "date": "2026-09-28",
       "end": "2026-10-28T00:00:00+09:00",

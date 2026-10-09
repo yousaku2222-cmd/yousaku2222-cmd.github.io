@@ -1,3 +1,45 @@
 {
-  "notices": []
+  "notices": [
+    {
+      "id": "2026-10-16-promo-yabai-word-ios",
+      "date": "2026-10-16",
+      "title": {
+        "ja": "日本語スラングが学べる「Yabai Word」",
+        "en": "Learn Japanese slang with \"Yabai Word\""
+      },
+      "body": {
+        "ja": "「やばい」「エモい」など、いま使われている日本語スラングの意味と使い方をイラストとクイズで学べます（アプリの画面は英語です）。\n同じ開発者が作っているアプリです。",
+        "en": "Learn real Japanese slang like \"yabai\" and \"emoi\" with illustrations and quizzes.\nMade by the same developer as this app."
+      },
+      "start": "2026-10-16T00:00:00+09:00",
+      "end": "2026-10-30T00:00:00+09:00",
+      "platforms": [
+        "ios"
+      ],
+      "url": "https://apps.apple.com/jp/app/id6811827247",
+      "urlLabel": {
+        "ja": "App Storeで見る",
+        "en": "View on the App Store"
+      }
+    },
+    {
+      "id": "2026-10-09-promo-talk-saver-ios",
+      "date": "2026-10-09",
+      "title": {
+        "ja": "LINEのトークを保存できるアプリ「トーク保存」"
+      },
+      "body": {
+        "ja": "大切なLINEのトークを保存して、あとから検索・見返しができます。\n同じ開発者が作っているアプリです。よければ使ってみてください。"
+      },
+      "start": "2026-10-09T00:00:00+09:00",
+      "end": "2026-10-23T00:00:00+09:00",
+      "platforms": [
+        "ios"
+      ],
+      "urlLabel": {
+        "ja": "App Storeで見る"
+      },
+      "url": "https://apps.apple.com/jp/app/id6806939272"
+    }
+  ]
 }
