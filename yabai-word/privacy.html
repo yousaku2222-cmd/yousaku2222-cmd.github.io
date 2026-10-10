@@ -28,7 +28,7 @@
 </head>
 <body>
 <h1>Yabai Word - Privacy Policy</h1>
-<p class="meta">Effective date: September 14, 2026 / Last updated: September 14, 2026</p>
+<p class="meta">Effective date: September 14, 2026 / Last updated: October 10, 2026</p>
 
 <p>"Yabai Word" (the "App") is provided by an independent developer, Yusaku Mizogami ("the Developer"). This policy explains what information the App handles.</p>
 
@@ -39,26 +39,40 @@
 <ul>
   <li>Your favorited words and archive progress</li>
   <li>Quiz history and your daily free-quiz usage status</li>
-  <li>Your notification time preference</li>
+  <li>Your notification time preference and display language (English or Japanese)</li>
   <li>Your premium subscription status (used to unlock features locally)</li>
 </ul>
-<p>Uninstalling the App removes this data from your device (in-app purchase records are tied to your Apple ID and can be restored).</p>
+<p>Uninstalling the App removes this data from your device (in-app purchase records are tied to your Apple ID or Google account and can be restored).</p>
 
 <h3>1.2 Content delivery (Firebase)</h3>
-<p>The App uses Google Firebase (Cloud Firestore) solely to download the slang word database. No personal or account information is sent to Firebase.</p>
+<p>The App uses Google Firebase (Cloud Firestore) to download the slang word database. No personal or account information is sent to Cloud Firestore.</p>
+<p>The App also downloads in-app notices (update announcements) from the Developer's website. This is a plain download; nothing is sent from your device.</p>
 
-<h3>1.3 Third-party services</h3>
+<h3>1.3 Usage analytics (Firebase Analytics)</h3>
+<p>From version 1.1.0, the App uses Google Firebase Analytics to understand how its features are used, so that the Developer can decide what to improve. Besides the standard events Firebase Analytics collects automatically (such as app opens, sessions and screen views), the App records:</p>
+<ul>
+  <li>Which display language you use (English or Japanese)</li>
+  <li>When you start, finish or share the word-age check, and the resulting age and title</li>
+  <li>When the Premium screen is opened and from which screen</li>
+  <li>When a subscription purchase is started or completed, and which plan</li>
+</ul>
+<p>Firebase Analytics also uses an app-instance identifier and basic device information (such as OS version and country). This data is not linked to your name or any account, is not used for advertising or ad personalization, and is not used to track you across other companies' apps or websites. Advertising-ID collection by Analytics is turned off.</p>
+
+<h3>1.4 Advertising (Google AdMob)</h3>
 <p>The App shows banner ads to free (non-subscribed) users via Google AdMob. AdMob may collect the advertising identifier (IDFA), device information, and approximate location (from IP address) to serve and measure ads.</p>
 <ul>
   <li>If you decline App Tracking Transparency permission on iOS, your advertising identifier is not used, and non-personalized ads are shown instead.</li>
   <li>See Google's Privacy Policy (<a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a>) and how Google uses information from sites or apps that use its services (<a href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a>).</li>
 </ul>
 
-<h3>1.4 On-device text-to-speech</h3>
+<h3>1.5 On-device text-to-speech</h3>
 <p>Word pronunciation uses your device's built-in text-to-speech engine. Text is processed on-device and is not sent to the Developer.</p>
 
+<h3>1.6 Sharing</h3>
+<p>When you share a word-age check result, the App creates the image on your device and hands it to your device's share sheet. Nothing is sent to the Developer.</p>
+
 <h2>2. In-app purchases</h2>
-<p>Premium subscriptions ("Yabai Word Premium") are processed entirely through the Apple App Store. The Developer does not receive or store your payment information. Use "Restore Purchases" in Settings to restore your subscription on a device signed in with the same Apple ID.</p>
+<p>Premium subscriptions ("Yabai Word Premium") are processed entirely through the Apple App Store or Google Play. The Developer does not receive or store your payment information. Use "Restore Purchases" to restore your subscription on a device signed in with the same Apple ID or Google account.</p>
 
 <h2>3. Notifications</h2>
 <p>The App can send a local daily reminder notification at a time you choose. This notification is scheduled entirely on your device and does not involve any server.</p>
@@ -67,17 +81,21 @@
 <ul>
   <li>Displaying today's slang word and delivering the word database (Firebase)</li>
   <li>Showing ads to free users (AdMob)</li>
-  <li>Providing in-app purchases (Apple)</li>
+  <li>Providing in-app purchases (Apple / Google Play)</li>
+  <li>Understanding feature usage to improve the App (Firebase Analytics)</li>
   <li>Sending local reminder notifications</li>
 </ul>
 
-<h2>5. Children's privacy</h2>
+<h2>5. 日本語の概要</h2>
+<p>本アプリはアカウント登録不要です。お気に入り・クイズ履歴・表示言語などは端末内だけに保存されます。単語データの取得に Firebase（Cloud Firestore）を、広告表示に Google AdMob を使います。バージョン1.1.0からは、機能の改善のために Firebase Analytics で、アプリの起動などの標準的な情報に加えて「表示言語」「言葉年齢診断の開始・完了・シェアと結果」「プレミアム画面を開いた画面」「購入の開始・完了とプラン」を記録します。これらは氏名やアカウントと結び付けず、広告やトラッキングには使いません。お支払い情報は Apple / Google が処理し、開発者は受け取りません。</p>
+
+<h2>6. Children's privacy</h2>
 <p>The App is not directed at children under 13.</p>
 
-<h2>6. Changes to this policy</h2>
+<h2>7. Changes to this policy</h2>
 <p>This policy may be updated without prior notice. Changes take effect once posted on this page.</p>
 
-<h2>7. Contact</h2>
+<h2>8. Contact</h2>
 <p>For questions about this policy, please contact:</p>
 <ul>
   <li>Developer: Yusaku Mizogami</li>
