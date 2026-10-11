@@ -1,6 +1,20 @@
 {
   "notices": [
     {
+      "id": "2026-10-11-released-1.1.0",
+      "date": "2026-10-11",
+      "title": {
+        "en": "Version 1.1.0 is here",
+        "ja": "バージョン1.1.0を公開しました"
+      },
+      "body": {
+        "en": "Yabai Word now speaks Japanese: switch with the EN/日 button at the top right.\nWe also added 50 words, mostly retro slang from the Showa and Heisei eras, and 30 new illustrations (No. 121 to 150).",
+        "ja": "日本語表示に対応しました。画面右上の「EN／日」で切り替えられます。\nホームの「言葉年齢診断」で、あなたの言葉の年齢を確かめてみてください。結果は画像でシェアできます。\n昭和・平成の流行語を中心に50語、イラストを30枚（No.121〜150）追加しました。"
+      },
+      "minVersion": "1.1.0",
+      "popup": true
+    },
+    {
       "id": "2026-10-10-update-1.1.0",
       "date": "2026-10-10",
       "title": {
