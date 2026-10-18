@@ -129,6 +129,12 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--sun); outline-o
 .tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
 .tabs button { height: 36px; border: 2px solid var(--ink); border-radius: 8px; background: var(--card); font-size: 13px; }
 .tabs button[aria-selected="true"] { background: var(--ink); color: #fff; }
+.tabs.src { grid-template-columns: repeat(2, 1fr); margin-bottom: 4px; }
+.tabs.src button[aria-selected="true"] { background: var(--sun); color: var(--sun-ink); }
+.entry-msg { font-size: 12px; font-weight: 700; color: #c0392b; min-height: 1em; }
+.rank-head { font-size: 12px; font-weight: 700; color: var(--ink-soft); }
+.rank-note { font-size: 11px; color: var(--ink-soft); margin: 0; }
+.rank-note:empty { display: none; }
 @media (prefers-reduced-motion: reduce) { #board.shaking { animation: none; } }
 </style>
 
@@ -173,13 +179,16 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--sun); outline-o
           <dt>完成した長崎県</dt><dd><div class="over-regions" id="rDone">なし</div></dd>
         </dl>
         <form class="entry" id="entryBox" hidden>
-          <label for="nameInput">ランキング入り！ 名前を入れて登録</label>
+          <label for="nameInput" id="entryLabel">ランキング入り！ 名前を入れて登録</label>
           <div class="entry-row">
             <input id="nameInput" maxlength="10" autocomplete="off" placeholder="ななしさん">
             <button type="submit" id="saveBtn">登録</button>
           </div>
+          <small class="entry-msg" id="entryMsg"></small>
         </form>
+        <div class="rank-head" id="rankOverHead" hidden></div>
         <ol class="rank" id="rankOver" hidden></ol>
+        <p class="rank-note" id="rankNote"></p>
         <a class="share" id="shareLink" href="https://twitter.com/intent/tweet" target="_blank" rel="noopener">結果をXでシェア</a>
         <div class="row2">
           <button class="btn-main" id="retryBtn" type="button">もう一回</button>
@@ -192,9 +201,10 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--sun); outline-o
     <div class="overlay" id="rankOv" hidden>
       <div class="panel">
         <h2>ランキング</h2>
+        <div class="tabs src" id="rankSrc" role="tablist"></div>
         <div class="tabs" id="rankTabs" role="tablist"></div>
         <ol class="rank" id="rankList"></ol>
-        <p class="credit">この端末で遊んだ記録だけが並びます。</p>
+        <p class="credit" id="rankCredit">この端末で遊んだ記録だけが並びます。</p>
         <button class="btn-sub" id="rankClose" type="button">閉じる</button>
       </div>
     </div>
@@ -630,31 +640,111 @@ function gameOver(reason = 'overflow') {
   const text = `長崎パック（${mode.label}）で${score.toLocaleString()}点！ ${round}周目まで到達、いちばん大きいかたまりは${maxCluster}市町でした。 #長崎パック`;
   $('shareLink').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text);
   $('bestOver').textContent = `${mode.label}の自己ベスト ${best.toLocaleString()} 点`;
-  // 上位10件に入るなら名前の登録欄を出す
+  // 名前の登録欄は、この端末の上位10件か、みんなの上位20件に入るときに出す
   const list = rk[modeKey];
-  const inRank = score > 0 && (list.length < 10 || score > list[list.length - 1].score);
-  $('entryBox').hidden = !inRank;
-  $('rankOver').hidden = inRank;
-  if (!inRank) renderRank($('rankOver'), modeKey, -1, 3);
-  if (inRank) { let nm = ''; try { nm = localStorage.getItem('nagasakipack-name') || ''; } catch (e) {} $('nameInput').value = nm; }
-  setTimeout(() => { $('overOv').hidden = false; (inRank ? $('nameInput') : $('retryBtn')).focus(); }, 700);
+  const localIn = score > 0 && (list.length < 10 || score > list[list.length - 1].score);
+  const runScore = score;
+  overOnlineIn = false;
+  $('entryBox').hidden = true; $('rankOver').hidden = true; $('rankOverHead').hidden = true; $('rankNote').textContent = '';
+  const online = fetchOnline(modeKey, 2500);
+  setTimeout(async () => {
+    const top = await online;
+    if (state !== 'over' || score !== runScore) return;
+    overOnlineIn = score > 0 && !!top && (top.length < ONLINE_N || score > top[top.length - 1].score);
+    const inRank = localIn || overOnlineIn;
+    $('entryLabel').textContent = overOnlineIn ? 'みんなのランキング入り！ 名前を入れて登録' : 'ランキング入り！ 名前を入れて登録';
+    $('entryMsg').textContent = '';
+    $('entryBox').hidden = !inRank;
+    $('rankOver').hidden = inRank;
+    if (!inRank) {
+      if (top) { setRankHead('みんなのランキング'); renderList($('rankOver'), top, -1, 3); }
+      else { setRankHead('この端末のランキング'); renderRank($('rankOver'), modeKey, -1, 3); }
+    }
+    if (inRank) { let nm = ''; try { nm = localStorage.getItem('nagasakipack-name') || ''; } catch (e) {} $('nameInput').value = nm; }
+    $('overOv').hidden = false; (inRank ? $('nameInput') : $('retryBtn')).focus();
+  }, 700);
 }
+// ---------- みんなのランキング(Firebase) ----------
+const ONLINE_N = 20;
+let overOnlineIn = false;
+function fetchOnline(key, ms = 4000) {
+  if (!window.OnlineRank) return Promise.resolve(null);
+  return Promise.race([
+    window.OnlineRank.top(key, ONLINE_N),
+    new Promise(r => setTimeout(() => r(null), ms)),
+  ]).catch(() => null);
+}
+function setRankHead(t) { $('rankOverHead').textContent = t; $('rankOverHead').hidden = false; }
+// 名前に使えない言葉(軍帥儀と同じ決まり)。カタカナ・全角・大文字・区切り記号をならしてから調べる
+const NG_WORDS = [
+  'ちんこ', 'ちんぽ', 'ちんちん', 'まんこ', 'おまんこ', 'せっくす', 'えっち',
+  'おっぱい', 'ふぇら', 'くんに', 'れいぷ', 'ごうかん', 'やりまん', 'やりちん',
+  'せふれ', 'おなにー', 'しこしこ', 'ぱいぱん', 'うんこ', 'うんち',
+  'sex', 'fuck', 'shit', 'dick', 'pussy', 'penis', 'porn', 'nude',
+  'rape', 'bitch', 'cunt', 'whore', 'slut',
+  'しね', '死ね', 'ころす', '殺す', 'きえろ', '消えろ', 'かす', 'くず', 'ごみ',
+  'ぶす', 'でぶ', 'はげ', 'がいじ', 'ききがい', 'きちがい', '気違い', 'かたわ',
+  'めくら', 'つんぼ', 'おし', 'しょうがいしゃ', '障害者', 'しな人',
+  'しなじん', '支那', 'えた', 'ひにん', '非人', 'ぶらく', '部落', 'くろんぼ',
+  'kill', 'die', 'nigger', 'nigga', 'fag', 'retard', 'kys',
+  'なちす', 'ひとらー', 'hitler', 'nazi', 'てろ', 'ばくは', '爆破',
+  'http', 'www', '.com', '.net', '.jp', 'line', 'らいん', 'ついったー',
+  'twitter', 'instagram', 'いんすた', 'tiktok', 'discord', 'でぃすこ',
+  '@', 'ゆーちゅーぶ', 'youtube',
+];
+// 短くてふつうの名前の一部になりやすい言葉は、名前全体がその言葉のときだけ止める
+const NG_EXACT = new Set(['kys', 'かす', 'くず', 'ごみ', 'ぶす', 'でぶ', 'はげ', 'おし', 'えた', 'しね', 'てろ', 'die', 'kill', 'line']);
+function normName(s) {
+  let out = '';
+  for (const ch of s) {
+    let c = ch.codePointAt(0);
+    if (c >= 0x30A1 && c <= 0x30F6) c -= 0x60;
+    if (c >= 0xFF01 && c <= 0xFF5E) c -= 0xFEE0;
+    if (c >= 0x41 && c <= 0x5A) c += 0x20;
+    const t = String.fromCodePoint(c);
+    if (/[\s\-_・ー~〜*＊!！?？/／|｜、。,]/.test(t)) continue;
+    out += t;
+  }
+  return out;
+}
+function isNgName(name) {
+  const n = normName(name);
+  return NG_WORDS.some(w => { const k = normName(w); return k && (NG_EXACT.has(w) ? n === k : n.includes(k)); });
+}
+function safeName(name) { const t = (name || '').trim(); return !t || isNgName(t) ? 'ななしさん' : t; }
+
 // ランキングの登録と表示
-function submitRank() {
-  const name = $('nameInput').value.trim().slice(0, 10) || 'ななしさん';
+async function submitRank() {
+  const raw = $('nameInput').value.trim().slice(0, 10);
+  if (raw && isNgName(raw)) { $('entryMsg').textContent = 'その名前は使えません'; return; }
+  const name = raw || 'ななしさん';
   try { localStorage.setItem('nagasakipack-name', name); } catch (e) {}
   const rk = loadRank();
   const d = new Date();
   const entry = { name, score, round, max: maxCluster, date: `${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()}`, t: Date.now() };
   rk[modeKey] = [...rk[modeKey], entry].sort((a, b) => b.score - a.score || a.t - b.t).slice(0, 10);
   saveRank(rk);
+  $('saveBtn').disabled = true;
+  let shown = false;
+  if (overOnlineIn && window.OnlineRank) {
+    $('entryMsg').textContent = '登録しています…';
+    try {
+      const id = await window.OnlineRank.submit({ mode: modeKey, name, score, round, max: maxCluster });
+      const top = await fetchOnline(modeKey, 4000);
+      if (top) { setRankHead('みんなのランキング'); renderList($('rankOver'), top, top.findIndex(e => e.id === id), ONLINE_N); shown = true; }
+    } catch (e) {
+      $('rankNote').textContent = String(e && e.code || '').includes('permission') ? '続けて登録したときは、30秒ほど空けてください。この端末には記録しました。' : 'みんなのランキングに送れませんでした。この端末には記録しました。';
+    }
+  }
+  if (!shown) { setRankHead('この端末のランキング'); renderRank($('rankOver'), modeKey, rk[modeKey].findIndex(e => e.t === entry.t), 10); }
+  $('saveBtn').disabled = false;
   $('entryBox').hidden = true;
   $('rankOver').hidden = false;
-  renderRank($('rankOver'), modeKey, rk[modeKey].findIndex(e => e.t === entry.t), 10);
   $('retryBtn').focus();
 }
-function renderRank(el, key, meIdx, limit) {
-  const list = loadRank()[key].slice(0, Math.max(limit, meIdx + 1));
+function renderRank(el, key, meIdx, limit) { renderList(el, loadRank()[key], meIdx, limit); }
+function renderList(el, all, meIdx, limit) {
+  const list = all.slice(0, Math.max(limit, meIdx + 1));
   el.innerHTML = '';
   if (!list.length) { const li = document.createElement('li'); li.className = 'none'; li.textContent = 'まだ記録がありません'; el.appendChild(li); return; }
   list.forEach((e, i) => {
@@ -681,19 +771,30 @@ function renderModes() {
     box.appendChild(b);
   }
 }
-let rankTab = 'easy';
-function openRanking(k = modeKey) {
-  rankTab = k;
-  const tabs = $('rankTabs'); tabs.innerHTML = '';
-  for (const [key, m] of Object.entries(MODES)) {
-    const b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'tab');
-    b.setAttribute('aria-selected', String(key === rankTab)); b.textContent = m.label;
-    b.addEventListener('click', () => openRanking(key));
-    tabs.appendChild(b);
-  }
-  renderRank($('rankList'), rankTab, -1, 10);
+let rankTab = 'easy', rankSrc = 'online';
+async function openRanking(k = modeKey, src = rankSrc) {
+  rankTab = k; rankSrc = src;
+  const tab = (box, items, cur, on) => {
+    box.innerHTML = '';
+    for (const [key, label] of items) {
+      const b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'tab');
+      b.setAttribute('aria-selected', String(key === cur)); b.textContent = label;
+      b.addEventListener('click', () => on(key));
+      box.appendChild(b);
+    }
+  };
+  tab($('rankSrc'), [['online', 'みんな'], ['local', 'この端末']], rankSrc, s => openRanking(rankTab, s));
+  tab($('rankTabs'), Object.entries(MODES).map(([key, m]) => [key, m.label]), rankTab, key => openRanking(key, rankSrc));
+  $('rankCredit').textContent = rankSrc === 'online' ? `みんなの上位${ONLINE_N}人です。` : 'この端末で遊んだ記録だけが並びます。';
   $('titleOv').hidden = true;
   $('rankOv').hidden = false;
+  const el = $('rankList');
+  if (rankSrc === 'local') { renderRank(el, rankTab, -1, 10); return; }
+  el.innerHTML = '<li class="none">読み込み中…</li>';
+  const top = await fetchOnline(k);
+  if (rankTab !== k || rankSrc !== src) return;
+  if (top) renderList(el, top, -1, ONLINE_N);
+  else el.innerHTML = '<li class="none">読み込めませんでした。電波のよいところで開き直してください</li>';
 }
 function showTitle() {
   state = 'title';
@@ -1064,4 +1165,40 @@ setupStage();
 state = 'title';
 (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { drawNext(); });
 requestAnimationFrame(frame);
+</script>
+<script type="module">
+// みんなのランキング: Firebase(Firestore)に記録を送る・読む。失敗してもゲームは端末のランキングで続けられる
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import { getFirestore, collection, query, where, orderBy, limit, getDocs, doc, writeBatch, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+const app = initializeApp({
+  apiKey: "AIzaSyB1l819TWlztqDCZV8jPma048xcIDRpD54",
+  authDomain: "nagasaki-pack.firebaseapp.com",
+  projectId: "nagasaki-pack",
+  storageBucket: "nagasaki-pack.firebasestorage.app",
+  messagingSenderId: "850851702278",
+  appId: "1:850851702278:web:34b3607308d1848edcc587",
+});
+const auth = getAuth(app), db = getFirestore(app);
+let signing = null;
+function ensureUser() {
+  if (auth.currentUser) return Promise.resolve(auth.currentUser);
+  return signing || (signing = signInAnonymously(auth).then(c => c.user).finally(() => { signing = null; }));
+}
+const fmt = ts => { const d = ts && ts.toDate ? ts.toDate() : new Date(); return d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate(); };
+window.OnlineRank = {
+  async top(mode, n) {
+    const snap = await getDocs(query(collection(db, "scores"), where("mode", "==", mode), orderBy("score", "desc"), limit(n)));
+    return snap.docs.map(d => { const v = d.data(); return { id: d.id, name: window.safeName(v.name), score: v.score, round: v.round, date: fmt(v.t) }; });
+  },
+  async submit(e) {
+    const u = await ensureUser();
+    const b = writeBatch(db);
+    b.set(doc(db, "limits", u.uid), { t: serverTimestamp() });
+    const ref = doc(collection(db, "scores"));
+    b.set(ref, { uid: u.uid, mode: e.mode, name: e.name, score: e.score, round: e.round, max: e.max, t: serverTimestamp() });
+    await b.commit();
+    return ref.id;
+  },
+};
 </script>
