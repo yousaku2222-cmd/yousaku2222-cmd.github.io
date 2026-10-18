@@ -1,6 +1,19 @@
 {
   "notices": [
     {
+      "id": "2026-10-18-android-release",
+      "date": "2026-10-18",
+      "title": "Android版を公開しました",
+      "body": "軍帥儀のAndroid版を、Google Playで公開しました。\nオンライン対戦は、iPhoneとAndroidのあいだでも遊べます。Androidを使っている友達も、「友達と対戦（合言葉を作る）」から誘ってみてください。",
+      "start": "2026-10-18T00:00:00+09:00",
+      "end": "2026-11-01T00:00:00+09:00",
+      "platforms": [
+        "ios"
+      ],
+      "url": "https://play.google.com/store/apps/details?id=com.gungiapp.gungi",
+      "urlLabel": "Google Playで見る"
+    },
+    {
       "id": "2026-11-01-season1-open",
       "date": "2026-11-01",
       "start": "2026-11-01T00:00:00+09:00",
