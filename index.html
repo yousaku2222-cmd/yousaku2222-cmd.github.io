@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ゆうのアプリ一覧</title>
-<meta name="description" content="AI初心者が個人開発で作ったアプリの一覧です。">
+<title>ゆうのアプリ一覧｜無料で使える・遊べるアプリ</title>
+<meta name="description" content="ゲーム・診断・暮らしに役立つアプリを、ひとりで作って公開しています。どれも無料で使えます。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ゆうのアプリ一覧 - AI初心者が、ひとりで6本作った">
 <meta property="og:description" content="AI初心者が個人開発で作ったアプリの一覧です。失敗談も数字も隠さず発信しています。">
@@ -12,99 +12,298 @@
 <meta property="og:image" content="https://yousaku2222-cmd.github.io/apps/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="apps/yu.jpg">
+<script>
+  // 見ている端末に合わせて、ストアのバッジを出し分ける
+  (function () {
+    var ua = navigator.userAgent;
+    var ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+    var android = /Android/.test(ua);
+    document.documentElement.className = ios ? 'is-ios' : android ? 'is-android' : 'is-pc';
+    if ('IntersectionObserver' in window) document.documentElement.className += ' anim';
+  })();
+</script>
 <style>
+  /* ふだんは明るい背景。端末がダークモードなら濃紺にする */
   :root {
-    --bg: #0A0E27;
-    --card: rgba(255,255,255,.05);
-    --line: #2a3150;
-    --text: #ffffff;
-    --sub: #aab3d6;
-    --dim: #8890b5;
-    --cyan: #00e5ff;
-    --pink: #ff3fa4;
-    --green: #39ff88;
-    --yellow: #ffe14d;
+    --bg: #f5f7fb;
+    --bg2: #f5f7fb;
+    --card: #ffffff;
+    --line: #e1e6f0;
+    --shadow: 0 2px 10px rgba(20,30,70,.06);
+    --text: #1d2440;
+    --sub: #4f5877;
+    --dim: #737c99;
+    --cyan: #00838f;
+    --on-cyan: #ffffff;
+    --glow: none;
+    --green: #1b8a4a;
+    --yellow: #b8860b;
+    --shot-line: #dfe4ee;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0A0E27;
+      --bg2: #1b1f4d;
+      --card: rgba(255,255,255,.05);
+      --line: #2a3150;
+      --shadow: none;
+      --text: #ffffff;
+      --sub: #aab3d6;
+      --dim: #8890b5;
+      --cyan: #00e5ff;
+      --on-cyan: #0A0E27;
+      --glow: 0 0 16px rgba(0,229,255,.45);
+      --green: #39ff88;
+      --yellow: #ffe14d;
+      --shot-line: transparent;
+    }
   }
   * { box-sizing: border-box; margin: 0; }
   body {
-    background: radial-gradient(circle at 80% 0%, #1b1f4d 0, var(--bg) 60%) fixed;
+    background: radial-gradient(circle at 80% 0%, var(--bg2) 0, var(--bg) 60%) fixed;
     background-color: var(--bg);
     color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
     line-height: 1.6;
   }
-  main { max-width: 960px; margin: 0 auto; padding: 48px 16px 56px; }
+  main { max-width: 960px; margin: 0 auto; padding: 40px 16px 56px; }
 
   .hero { text-align: center; }
-  .avatar {
-    width: 148px; height: 148px; border-radius: 50%;
-    object-fit: cover; object-position: center 30%;
-    border: 3px solid var(--cyan);
-    box-shadow: 0 0 28px rgba(0,229,255,.35);
+  /* 冒頭のキャラの列。押すとそのアプリのカードへ飛ぶ */
+  .cast { display: flex; justify-content: center; align-items: flex-end; gap: 10px; }
+  .cast a { display: flex; flex-direction: column; align-items: center; gap: 4px; color: var(--sub); text-decoration: none; font-size: 11px; font-weight: 700; }
+  .cast img {
+    width: 60px; height: 60px; border-radius: 50%; object-fit: cover; object-position: top;
+    background: var(--card); border: 2px solid var(--line); box-shadow: var(--shadow);
   }
-  .cmd { font-family: Menlo, Consolas, monospace; color: var(--dim); font-size: 14px; margin-top: 18px; }
-  .cmd b { color: var(--green); }
-  .name { font-size: 15px; color: var(--sub); margin-top: 4px; }
-  h1 { font-size: 30px; font-weight: 900; line-height: 1.35; margin: 6px 0 10px; }
-  h1 em { font-style: normal; color: var(--cyan); text-shadow: 0 0 16px rgba(0,229,255,.45); }
+  .cast .me img { width: 84px; height: 84px; border: 3px solid var(--cyan); object-position: center 30%; }
+  .cast a:nth-child(1) img { animation-delay: -.4s; }
+  .cast a:nth-child(2) img { animation-delay: -1.2s; }
+  .cast a:nth-child(4) img { animation-delay: -2s; }
+  .cast a:nth-child(5) img { animation-delay: -2.8s; }
+  @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+  @media (prefers-reduced-motion: no-preference) {
+    .cast img { animation: bob 3.2s ease-in-out infinite; }
+  }
+  h1 { font-size: 28px; font-weight: 900; line-height: 1.4; margin: 16px 0 8px; }
+  h1 em { font-style: normal; color: var(--cyan); text-shadow: var(--glow); }
   .nb { display: inline-block; }
   .lead { color: var(--sub); font-size: 15px; max-width: 520px; margin: 0 auto; }
+
+  .jump { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 22px 0 8px; }
+  .jump a {
+    padding: 8px 18px; border-radius: 999px; border: 1px solid var(--line);
+    background: var(--card); color: var(--text); text-decoration: none; font-size: 14px; font-weight: 700;
+    box-shadow: var(--shadow);
+  }
+
+  h2 { font-size: 20px; font-weight: 900; margin: 40px 0 14px; scroll-margin-top: 16px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; }
+  .app {
+    background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 18px;
+    display: flex; flex-direction: column; box-shadow: var(--shadow); scroll-margin-top: 16px;
+  }
+  /* スクロールで見えたカードをふわっと出す(JSが動くときだけ) */
+  @media (prefers-reduced-motion: no-preference) {
+    .anim .app { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+    .anim .app.shown { opacity: 1; transform: none; }
+  }
+  .head { display: flex; gap: 14px; align-items: center; }
+  .head img { width: 64px; height: 64px; border-radius: 15px; flex: none; }
+  .head div { min-width: 0; }
+  .app .t { font-size: 18px; font-weight: 800; line-height: 1.35; }
+  .app .d { color: var(--sub); font-size: 13px; line-height: 1.5; }
+  .for { margin-top: 12px; font-size: 13px; line-height: 1.55; }
+  .for b { color: var(--cyan); }
+  .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 12px; }
+  .shots img { width: 100%; aspect-ratio: 300 / 649; object-fit: cover; object-position: top; border-radius: 8px; background: var(--line); display: block; border: 1px solid var(--shot-line); }
+  /* 横画面のアプリ(術牌)は横長のまま縦に並べる */
+  .shots.wide { grid-template-columns: 1fr; }
+  .shots.wide img { aspect-ratio: 640 / 296; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .tags span { font-size: 12px; padding: 2px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--sub); }
+  .tags .free { border-color: var(--green); color: var(--green); font-weight: 700; }
+  .spacer { flex: 1; }
+  .store { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: center; margin-top: 14px; min-height: 44px; }
+  .store a { display: block; line-height: 0; }
+  .store .as img { height: 44px; }
+  /* Google Play のバッジは画像に余白を含むので、見た目の高さを App Store にそろえる */
+  .store .gp img { height: 64px; margin: -10px -5px; }
+  .store .play { padding: 10px 22px; border-radius: 12px; background: var(--cyan); color: var(--on-cyan); font-weight: 800; font-size: 15px; text-decoration: none; line-height: 1.4; }
+  .store .none { display: none; font-size: 12px; color: var(--dim); }
+  .is-ios .store .gp { display: none; }
+  .is-android .store .as { display: none; }
+  .is-android .store .none { display: block; }
+  .links { display: flex; flex-wrap: wrap; gap: 4px 14px; justify-content: center; margin-top: 10px; font-size: 12px; }
+  .links a { color: var(--dim); }
+  .ph { display: block; text-align: center; margin-top: 10px; }
+  .ph img { display: inline-block; vertical-align: middle; }
+
+  .about {
+    margin-top: 48px; padding: 24px 20px; border-radius: 20px;
+    background: var(--card); border: 1px solid var(--line); text-align: center; box-shadow: var(--shadow);
+  }
+  .about h2 { margin: 0 0 6px; }
+  .about p { color: var(--sub); font-size: 14px; max-width: 560px; margin: 0 auto; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 420px; margin: 18px auto 0; }
+  .stat { padding: 10px 6px; border-radius: 14px; border: 1px solid var(--line); }
+  .stat b { display: block; font-size: 24px; font-weight: 900; font-family: "Segoe UI", -apple-system, sans-serif; line-height: 1.2; }
+  .stat span { display: block; font-size: 11px; line-height: 1.45; color: var(--sub); }
+  .c { color: var(--cyan); } .g { color: var(--green); } .y { color: var(--yellow); }
+  .sns { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 18px; }
   .x {
-    display: inline-flex; align-items: center; gap: 8px; margin-top: 18px;
-    padding: 10px 22px; border-radius: 999px; border: 1px solid var(--line);
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 20px; border-radius: 999px; border: 1px solid var(--line);
     background: var(--card); color: var(--text); text-decoration: none; font-size: 14px; font-weight: 700;
   }
   .x svg { width: 16px; height: 16px; fill: currentColor; }
-  .sns { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 18px; }
-  .sns .x { margin-top: 0; }
 
-  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 460px; margin: 32px auto 40px; }
-  .stat {
-    padding: 14px 6px; border-radius: 16px;
-    background: var(--card); border: 1px solid var(--line); text-align: center;
-  }
-  .stat b { display: block; font-size: 28px; font-weight: 900; font-family: "Segoe UI", -apple-system, sans-serif; line-height: 1.2; }
-  .stat span { display: block; font-size: 12px; line-height: 1.45; color: var(--sub); }
-  .c { color: var(--cyan); } .g { color: var(--green); } .y { color: var(--yellow); }
-
-  h2 { font-size: 15px; font-family: Menlo, Consolas, monospace; color: var(--dim); font-weight: 400; margin-bottom: 14px; }
-  h2 b { color: var(--green); font-weight: 400; }
-  h2.web { margin-top: 36px; }
-  .links .note { color: var(--dim); }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
-  .app {
-    background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 18px;
-    display: flex; flex-direction: column;
-  }
-  .head { display: flex; gap: 14px; align-items: center; flex: 1; }
-  .head img { width: 68px; height: 68px; border-radius: 16px; flex: none; }
-  .head div { min-width: 0; }
-  .app .t { font-size: 18px; font-weight: 800; line-height: 1.35; }
-  .app .d { color: var(--sub); font-size: 13px; }
-  .btns { display: flex; gap: 8px; margin-top: 14px; }
-  .btns a, .btns span {
-    flex: 1; text-align: center; padding: 9px 6px; border-radius: 12px;
-    font-size: 13px; font-weight: 700; text-decoration: none;
-  }
-  .btns a { background: var(--cyan); color: var(--bg); }
-  .btns span { background: var(--line); color: var(--dim); }
-  .links { display: flex; flex-wrap: wrap; gap: 4px 14px; justify-content: center; margin-top: 10px; font-size: 12px; }
-  .links a { color: var(--dim); }
-  .ph { display: block; text-align: center; margin-top: 12px; }
-  .ph img { display: inline-block; vertical-align: middle; }
-
-  footer { text-align: center; color: var(--dim); font-size: 13px; margin-top: 40px; }
+  footer { text-align: center; color: var(--dim); font-size: 13px; margin-top: 32px; }
   footer a { color: var(--dim); }
 </style>
 </head>
 <body>
 <main>
   <section class="hero">
-    <img class="avatar" src="apps/yu.jpg" alt="ゆうのキャラクター">
-    <div class="cmd"><b>$</b> whoami</div>
-    <div class="name">ゆう@おっさんのアプリ開発</div>
-    <h1><span class="nb">AI初心者が、</span><span class="nb">ひとりで<em>6本</em>作った</span></h1>
-    <p class="lead">本業のかたわら、AIと一緒に個人開発でアプリを作っています。失敗談も数字も、隠さず発信中。</p>
+    <nav class="cast">
+      <a href="#app-mbti"><img src="apps/chara/mbti.webp" alt="">16タイプ診断</a>
+      <a href="#app-anniv"><img src="apps/chara/anniv.webp" alt="">Anniv</a>
+      <a class="me" href="#about"><img src="apps/yu.jpg" alt="ゆうのキャラクター">ゆう</a>
+      <a href="#app-gunsuigi"><img src="apps/chara/gunsuigi.webp" alt="">軍帥儀</a>
+      <a href="#app-jutsufuda"><img src="apps/chara/jutsufuda.webp" alt="">術牌</a>
+    </nav>
+    <h1><span class="nb">ゲーム・診断・暮らしの</span><span class="nb">アプリを<em>無料</em>で</span></h1>
+    <p class="lead">ひとりで作って、ひとりで更新しています。気になるものがあれば、気軽にさわってみてください。</p>
+    <nav class="jump">
+      <a href="#game">ゲーム</a>
+      <a href="#shindan">診断・あそび</a>
+      <a href="#kurashi">暮らし・便利</a>
+    </nav>
+  </section>
+
+  <h2 id="game">ゲーム</h2>
+  <div class="grid">
+    <section class="app" id="app-gunsuigi">
+      <div class="head">
+        <img src="gunsuigi/icon.png" alt="">
+        <div><div class="t">軍帥儀</div><div class="d">駒を積み上げて戦う、将棋みたいな盤上ゲーム</div></div>
+      </div>
+      <p class="for"><b>こんな人に</b>　将棋や戦略ゲームが好き。CPUとも、オンラインで友だちとも対局したい。</p>
+      <div class="shots"><img src="apps/shots/gunsuigi-1.webp" alt="" loading="lazy"><img src="apps/shots/gunsuigi-2.webp" alt="" loading="lazy"><img src="apps/shots/gunsuigi-3.webp" alt="" loading="lazy"></div>
+      <div class="tags"><span class="free">無料</span><span>オンライン対戦</span><span>詰め問題つき</span><span>アプリ内課金あり</span></div>
+      <div class="spacer"></div>
+      <div class="store">
+        <a class="as" href="https://apps.apple.com/jp/app/id6816472752"><img src="apps/badges/app-store.svg" alt="App Storeからダウンロード"></a>
+        <a class="gp" href="https://play.google.com/store/apps/details?id=com.gungiapp.gungi"><img src="apps/badges/google-play.png" alt="Google Play で手に入れよう"></a>
+      </div>
+      <div class="links"><a href="gunsuigi/">くわしく</a><a href="gunsuigi/privacy.html">プライバシーポリシー</a><a href="gunsuigi/tokushoho.html">特商法の表記</a></div>
+    </section>
+    <section class="app" id="app-jutsufuda">
+      <div class="head">
+        <img src="jutsufuda/icon.png" alt="">
+        <div><div class="t">術牌</div><div class="d">手札を先に出し切った人が勝つ、牌のゲーム</div></div>
+      </div>
+      <p class="for"><b>こんな人に</b>　大富豪のようなカードゲームが好き。ひとりでじっくりも、友だちとわいわいも。</p>
+      <div class="shots wide"><img src="apps/shots/jutsufuda-1.webp" alt="" loading="lazy"><img src="apps/shots/jutsufuda-2.webp" alt="" loading="lazy"></div>
+      <div class="tags"><span class="free">無料</span><span>ランク戦</span><span>一人用モード</span><span>チュートリアルつき</span></div>
+      <div class="spacer"></div>
+      <div class="store">
+        <a class="as" href="https://apps.apple.com/jp/app/id6817762455"><img src="apps/badges/app-store.svg" alt="App Storeからダウンロード"></a>
+        <span class="none">iPhone版のみ（Android版は準備中）</span>
+      </div>
+      <div class="links"><a href="jutsufuda/">くわしく</a><a href="https://youtube.com/shorts/bvQW3CUrlfs">紹介動画</a><a href="jutsufuda/privacy.html">プライバシーポリシー</a><a href="jutsufuda/tokushoho.html">特商法の表記</a></div>
+    </section>
+    <section class="app" id="app-nagasaki">
+      <div class="head">
+        <img src="apps/nagasaki-pack-icon.png" alt="">
+        <div><div class="t">長崎パック</div><div class="d">地図のピースを箱に詰める物理パズル（長崎県・九州・全国）</div></div>
+      </div>
+      <p class="for"><b>こんな人に</b>　ちょっとした空き時間に遊びたい。地元や地図が好き。</p>
+      <div class="tags"><span class="free">無料</span><span>インストール不要</span><span>みんなのランキング</span></div>
+      <div class="spacer"></div>
+      <div class="store">
+        <a class="play" href="https://nagasaki-pack.web.app/">ブラウザで遊ぶ</a>
+      </div>
+    </section>
+  </div>
+
+  <h2 id="shindan">診断・あそび</h2>
+  <div class="grid">
+    <section class="app" id="app-mbti">
+      <div class="head">
+        <img src="mbti/icon.png" alt="">
+        <div><div class="t">なんか変ないきもの16タイプ診断</div><div class="d">48問で性格を16タイプに。あなたに似たキャラも分かる</div></div>
+      </div>
+      <p class="for"><b>こんな人に</b>　性格診断が好き。結果を友だちやSNSでシェアして盛り上がりたい。</p>
+      <div class="shots"><img src="apps/shots/mbti-1.webp" alt="" loading="lazy"><img src="apps/shots/mbti-2.webp" alt="" loading="lazy"><img src="apps/shots/mbti-3.webp" alt="" loading="lazy"></div>
+      <div class="tags"><span class="free">無料</span><span>4つの世界観</span><span>診断カードをシェア</span><span>アプリ内課金あり</span></div>
+      <div class="spacer"></div>
+      <div class="store">
+        <a class="as" href="https://apps.apple.com/jp/app/id6810761224"><img src="apps/badges/app-store.svg" alt="App Storeからダウンロード"></a>
+        <span class="none">iPhone版のみ（Android版は準備中）</span>
+      </div>
+      <div class="links"><a href="mbti/">くわしく</a><a href="mbti/privacy.html">プライバシーポリシー</a></div>
+    </section>
+    <section class="app" id="app-yabai">
+      <div class="head">
+        <img src="yabai-word/icon.png" alt="">
+        <div><div class="t">Yabai Word</div><div class="d">言葉年齢診断と、昭和〜令和の流行語・若者言葉の辞典</div></div>
+      </div>
+      <p class="for"><b>こんな人に</b>　若者言葉が分からなくてモヤモヤする。家族や職場で「言葉年齢」を比べてみたい。</p>
+      <div class="shots"><img src="apps/shots/yabai-1.webp" alt="" loading="lazy"><img src="apps/shots/yabai-2.webp" alt="" loading="lazy"><img src="apps/shots/yabai-3.webp" alt="" loading="lazy"></div>
+      <div class="tags"><span class="free">無料</span><span>300語収録</span><span>毎日1語イラスト付き</span><span>アプリ内課金あり</span></div>
+      <div class="spacer"></div>
+      <div class="store">
+        <a class="as" href="https://apps.apple.com/jp/app/id6811827247"><img src="apps/badges/app-store.svg" alt="App Storeからダウンロード"></a>
+        <a class="gp" href="https://play.google.com/store/apps/details?id=com.mizogami.yabai_word"><img src="apps/badges/google-play.png" alt="Google Play で手に入れよう"></a>
+      </div>
+      <div class="links"><a href="yabai-word/">くわしく</a><a href="yabai-word/privacy.html">プライバシーポリシー</a></div>
+      <a class="ph" href="https://www.producthunt.com/products/yabai-word?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-yabai-word" target="_blank" rel="noopener"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1277346&amp;theme=dark" alt="Yabai Word on Product Hunt" width="200" height="43"></a>
+    </section>
+  </div>
+
+  <h2 id="kurashi">暮らし・便利</h2>
+  <div class="grid">
+    <section class="app" id="app-talk">
+      <div class="head">
+        <img src="apps/talk-saver-icon.png" alt="">
+        <div><div class="t">トーク保存</div><div class="d">書き出したトーク履歴を、見返しやすい形でスマホに残す</div></div>
+      </div>
+      <p class="for"><b>こんな人に</b>　大切なトークを残しておきたい。発言者や期間、キーワードで探したい。</p>
+      <div class="shots"><img src="apps/shots/talk-1.webp" alt="" loading="lazy"><img src="apps/shots/talk-2.webp" alt="" loading="lazy"><img src="apps/shots/talk-3.webp" alt="" loading="lazy"></div>
+      <div class="tags"><span class="free">無料</span><span>データは端末内だけ</span><span>Excel・PDFに書き出し</span><span>アプリ内課金あり</span></div>
+      <div class="spacer"></div>
+      <div class="store">
+        <a class="as" href="https://apps.apple.com/jp/app/id6806939272"><img src="apps/badges/app-store.svg" alt="App Storeからダウンロード"></a>
+        <a class="gp" href="https://play.google.com/store/apps/details?id=com.yousaku.line_talk_saver"><img src="apps/badges/google-play.png" alt="Google Play で手に入れよう"></a>
+      </div>
+      <div class="links"><a href="https://sites.google.com/view/line-talk-saver-privacy">プライバシーポリシー</a></div>
+    </section>
+    <section class="app" id="app-anniv">
+      <div class="head">
+        <img src="anniv/icon.png" alt="">
+        <div><div class="t">Anniv</div><div class="d">誕生日・記念日まであと何日？を数えるカウントダウン</div></div>
+      </div>
+      <p class="for"><b>こんな人に</b>　大切な日をうっかり忘れたくない。ホーム画面でひと目で確認したい。</p>
+      <div class="shots"><img src="apps/shots/anniv-1.webp" alt="" loading="lazy"><img src="apps/shots/anniv-2.webp" alt="" loading="lazy"><img src="apps/shots/anniv-3.webp" alt="" loading="lazy"></div>
+      <div class="tags"><span class="free">無料</span><span>アカウント登録不要</span><span>ウィジェット対応</span><span>アプリ内課金あり</span></div>
+      <div class="spacer"></div>
+      <div class="store">
+        <a class="as" href="https://apps.apple.com/jp/app/id6807027335"><img src="apps/badges/app-store.svg" alt="App Storeからダウンロード"></a>
+        <a class="gp" href="https://play.google.com/store/apps/details?id=com.annivapp.anniv"><img src="apps/badges/google-play.png" alt="Google Play で手に入れよう"></a>
+      </div>
+      <div class="links"><a href="anniv/">くわしく</a><a href="anniv/privacy-policy.html">プライバシーポリシー</a></div>
+    </section>
+  </div>
+
+  <section class="about" id="about">
+    <h2>作っている人</h2>
+    <p>ゆう（@claude_de_tsuk）です。本業のかたわら、AIと一緒にひとりでアプリを作っています。開発の失敗談や数字も、SNSで隠さず発信中です。</p>
+    <div class="stats">
+      <div class="stat"><b class="c">6</b><span>作った<br>アプリ</span></div>
+      <div class="stat"><b class="g">6</b><span>App Store<br>公開中</span></div>
+      <div class="stat"><b class="y">4</b><span>Google Play<br>公開中</span></div>
+    </div>
     <div class="sns">
       <a class="x" href="https://x.com/claude_de_tsuk"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>X</a>
       <a class="x" href="https://www.youtube.com/@claude_de_tsuk"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"/></svg>YouTube</a>
@@ -112,103 +311,17 @@
     </div>
   </section>
 
-  <div class="stats">
-    <div class="stat"><b class="c">6</b><span>作った<br>アプリ</span></div>
-    <div class="stat"><b class="g">6</b><span>App Store<br>公開中</span></div>
-    <div class="stat"><b class="y">4</b><span>Google Play<br>公開中</span></div>
-  </div>
-
-  <h2><b>$</b> ls ./apps</h2>
-  <div class="grid">
-    <section class="app">
-      <div class="head">
-        <img src="apps/talk-saver-icon.png" alt="">
-        <div><div class="t">トーク保存</div><div class="d">大切なLINEのトークを保存</div></div>
-      </div>
-      <div class="btns">
-        <a href="https://apps.apple.com/jp/app/id6806939272">App Store</a>
-        <a href="https://play.google.com/store/apps/details?id=com.yousaku.line_talk_saver">Google Play</a>
-      </div>
-      <div class="links"><a href="https://sites.google.com/view/line-talk-saver-privacy">プライバシーポリシー</a></div>
-    </section>
-
-    <section class="app">
-      <div class="head">
-        <img src="anniv/icon.png" alt="">
-        <div><div class="t">Anniv</div><div class="d">記念日カウントダウン・ダイエット応援</div></div>
-      </div>
-      <div class="btns">
-        <a href="https://apps.apple.com/jp/app/id6807027335">App Store</a>
-        <a href="https://play.google.com/store/apps/details?id=com.annivapp.anniv">Google Play</a>
-      </div>
-      <div class="links"><a href="anniv/">くわしく</a><a href="anniv/privacy-policy.html">プライバシーポリシー</a></div>
-    </section>
-
-    <section class="app">
-      <div class="head">
-        <img src="mbti/icon.png" alt="">
-        <div><div class="t">なんか変ないきもの16タイプ診断</div><div class="d">ゆるい生き物で性格を診断</div></div>
-      </div>
-      <div class="btns">
-        <a href="https://apps.apple.com/jp/app/id6810761224">App Store</a>
-        <span>Google Play 準備中</span>
-      </div>
-      <div class="links"><a href="mbti/">くわしく</a><a href="mbti/privacy.html">プライバシーポリシー</a></div>
-    </section>
-
-    <section class="app">
-      <div class="head">
-        <img src="yabai-word/icon.png" alt="">
-        <div><div class="t">Yabai Word</div><div class="d">言葉年齢診断・若者言葉(日本語版も)</div></div>
-      </div>
-      <div class="btns">
-        <a href="https://apps.apple.com/jp/app/id6811827247">App Store</a>
-        <a href="https://play.google.com/store/apps/details?id=com.mizogami.yabai_word">Google Play</a>
-      </div>
-      <div class="links"><a href="yabai-word/">くわしく</a><a href="yabai-word/privacy.html">プライバシーポリシー</a></div>
-      <a class="ph" href="https://www.producthunt.com/products/yabai-word?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-yabai-word" target="_blank" rel="noopener"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1277346&amp;theme=dark" alt="Yabai Word on Product Hunt" width="200" height="43"></a>
-    </section>
-
-    <section class="app">
-      <div class="head">
-        <img src="gunsuigi/icon.png" alt="">
-        <div><div class="t">軍帥儀</div><div class="d">将棋みたいな盤上ゲーム</div></div>
-      </div>
-      <div class="btns">
-        <a href="https://apps.apple.com/jp/app/id6816472752">App Store</a>
-        <a href="https://play.google.com/store/apps/details?id=com.gungiapp.gungi">Google Play</a>
-      </div>
-      <div class="links"><a href="gunsuigi/">くわしく</a><a href="gunsuigi/privacy.html">プライバシーポリシー</a><a href="gunsuigi/tokushoho.html">特商法の表記</a></div>
-    </section>
-
-    <section class="app">
-      <div class="head">
-        <img src="jutsufuda/icon.png" alt="">
-        <div><div class="t">術牌</div><div class="d">牌を出し切るカードゲーム</div></div>
-      </div>
-      <div class="btns">
-        <a href="https://apps.apple.com/jp/app/id6817762455">App Store</a>
-        <span>Google Play 準備中</span>
-      </div>
-      <div class="links"><a href="jutsufuda/">くわしく</a><a href="https://youtube.com/shorts/bvQW3CUrlfs">紹介動画</a><a href="jutsufuda/privacy.html">プライバシーポリシー</a><a href="jutsufuda/tokushoho.html">特商法の表記</a></div>
-    </section>
-  </div>
-
-  <h2 class="web"><b>$</b> ls ./web</h2>
-  <div class="grid">
-    <section class="app">
-      <div class="head">
-        <img src="apps/nagasaki-pack-icon.png" alt="">
-        <div><div class="t">長崎パック</div><div class="d">地図を箱に詰める物理パズル（長崎県・九州・全国）</div></div>
-      </div>
-      <div class="btns">
-        <a href="https://nagasaki-pack.web.app/">ブラウザで遊ぶ</a>
-      </div>
-      <div class="links"><span class="note">インストール不要・ランキングあり</span></div>
-    </section>
-  </div>
-
   <footer>© ゆう / <a href="https://x.com/claude_de_tsuk">@claude_de_tsuk</a></footer>
 </main>
+<script>
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('shown'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.app').forEach(function (el) { io.observe(el); });
+    // キャラから飛んできたカードは、すぐ見えるようにする
+    addEventListener('hashchange', function () { var t = document.querySelector(location.hash); if (t && t.classList.contains('app')) t.classList.add('shown'); });
+  }
+</script>
 </body>
 </html>
