@@ -1,6 +1,20 @@
 {
   "notices": [
     {
+      "id": "2026-10-30-released-1.2.0",
+      "date": "2026-10-30",
+      "start": "2026-10-30T00:00:00+09:00",
+      "end": "2026-11-30T00:00:00+09:00",
+      "title": {
+        "ja": "アップデートしました（ver 1.2.0）",
+        "en": "Anniv 1.2.0 is here"
+      },
+      "body": {
+        "ja": "【着せ替え】\n・「ノートと色ペン」「水彩」「色鉛筆」「押し花と和紙」「夜空の星図」の5種類から、アプリ全体の見た目を選べるようになりました（有料・買い切り）\n・購入前に試着でき、動画広告を1本見ると1日お試しもできます\n\n【カレンダーから取り込む】\n・端末のカレンダーから、誕生日や記念日をまとめて取り込めます（設定 →「カレンダーから取り込む」）\n\n【そのほか】\n・設定のいちばん上に「ショップ」を作り、広告の除去と着せ替えをまとめました\n・ホーム画面のウィジェットの残り日数が、アプリを開かなくても毎日変わるようにしました\n・英語に対応しました\n\nまだ更新していない方は、App Store / Google Play からアップデートしてください。",
+        "en": "Thanks for using Anniv! Here is what is new:\n\n[Themes]\n- Change the look of the whole app with five hand-drawn themes: Notebook & Color Pens, Watercolor, Colored Pencil, Pressed Flowers & Washi, and Night Sky (one-time purchase).\n- Preview any theme before buying, or watch one short video ad to try it free for a day.\n\n[Import from Calendar]\n- Bring birthdays and anniversaries in from your device calendar in one go (Settings > Import from calendar).\n\n[Also]\n- Anniv is now available in English.\n- A new Shop section at the top of Settings gathers Remove Ads and themes.\n- The home screen widget now updates the days left every day, even without opening the app."
+      }
+    },
+    {
       "id": "2026-10-14-released-1.1.0-ios",
       "date": "2026-10-14",
       "start": "2026-10-14T00:00:00+09:00",

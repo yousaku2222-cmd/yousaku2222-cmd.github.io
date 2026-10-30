@@ -6,7 +6,7 @@
 
 | アプリ | ファイル | 表示言語 |
 |---|---|---|
-| Anniv | `anniv.json` | 日本語固定 |
+| Anniv | `anniv.json` | 1.2.0 以降は端末の言語（日本語以外は `en`、無ければ `ja`）、それより前は日本語固定 |
 | トーク保存 | `talk_saver.json` | 端末の言語（ja/en/ko/zh/zh_Hant/id/th） |
 | 16タイプ診断 | `mbti.json` | 日本語固定 |
 | Yabai Word | `yabai_word.json` | 英語固定（`en` が無ければ `ja`） |
