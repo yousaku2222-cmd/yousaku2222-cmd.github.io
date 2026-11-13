@@ -1,6 +1,67 @@
 {
   "notices": [
     {
+      "id": "2026-11-13-released-1.4.3",
+      "date": "2026-11-13",
+      "start": "2026-11-13T00:00:00+09:00",
+      "end": "2026-12-13T00:00:00+09:00",
+      "minVersion": "1.4.3",
+      "title": {
+        "ja": "アップデートしました（ver 1.4.3）",
+        "en": "Updated to ver 1.4.3"
+      },
+      "body": {
+        "ja": "ver 1.4.3 を公開しました。\n\n【対局】\n・王手を続けて千日手の負けになる手を、CPUがさけるようになりました。人が指すときは、指す前に注意が出ます\n・入門のCPUが、60手を過ぎて駒の数に大きな差がつくと「参りました」と投了します。上限の手数で同数なら、入門だけ人の勝ちです。武者修行の一番・二番も同じ決まりです\n・詰み・投了・駒の数での決着でも演出が出ます。「大きい駒取り」の演出は、帥・大将・中将を取ったときだけにしました\n・対局はじめの「VS」をタップで飛ばせます\n\n【はじめての方に】\n・チュートリアルの最後に［入門と対戦する］を追加しました\n・入門にはじめて勝つと、結果画面のボタンが「次は武者修行・一番」のように、いま挑む番を示します\n・入門帳：まだ先の日の課題も数えます。入門帳の1日目のごほうびを受け取ると、通知の許可を聞きます",
+        "en": "Version 1.4.3 is here.\n\n[Matches]\n- The CPU now avoids moves that would lose by repetition through continuous checks. When you play one, a warning appears before the move.\n- The Novice CPU now resigns after move 60 if the piece count gap is large. At the move limit, a tie counts as your win against Novice only. Warrior's Journey bouts 1 and 2 follow the same rules.\n- A finishing effect now plays for checkmate, resignation and piece-count wins too. The \"big capture\" effect now plays only when the Marshal, General or Lieutenant General is taken.\n- The \"VS\" screen at the start of a match can be skipped with a tap.\n\n[For new players]\n- New [Play vs Novice] button at the end of the tutorial.\n- After your first win against Novice, the result button shows your current bout, such as \"Next: Warrior's Journey - Bout 1\".\n- Starter Book: tasks for days not yet open are now counted. After you claim Day 1 of the Starter Book, you are asked about notifications."
+      }
+    },
+    {
+      "id": "2026-11-13-update-1.4.3-ios",
+      "date": "2026-11-13",
+      "start": "2026-11-13T00:00:00+09:00",
+      "end": "2026-12-13T00:00:00+09:00",
+      "platforms": [
+        "ios"
+      ],
+      "maxVersion": "1.4.2",
+      "title": {
+        "ja": "新しい版（ver 1.4.3）が出ました",
+        "en": "A new version (ver 1.4.3) is out"
+      },
+      "body": {
+        "ja": "千日手の負けをさけるCPU、入門のCPUの投了、詰み・投了での決着の演出、チュートリアルから入門戦へ進めるボタンなどを加えました。App Store からアップデートしてください。",
+        "en": "The CPU now avoids losing by repetition, the Novice CPU can resign, finishing effects play for checkmate and resignation too, and the tutorial leads to a Novice match. Please update from the App Store."
+      },
+      "url": "https://apps.apple.com/jp/app/id6816472752",
+      "urlLabel": {
+        "ja": "アップデートする",
+        "en": "Update"
+      }
+    },
+    {
+      "id": "2026-11-13-update-1.4.3-android",
+      "date": "2026-11-13",
+      "start": "2026-11-13T00:00:00+09:00",
+      "end": "2026-12-13T00:00:00+09:00",
+      "platforms": [
+        "android"
+      ],
+      "maxVersion": "1.4.2",
+      "title": {
+        "ja": "新しい版（ver 1.4.3）が出ました",
+        "en": "A new version (ver 1.4.3) is out"
+      },
+      "body": {
+        "ja": "千日手の負けをさけるCPU、入門のCPUの投了、詰み・投了での決着の演出、チュートリアルから入門戦へ進めるボタンなどを加えました。Google Play からアップデートしてください。",
+        "en": "The CPU now avoids losing by repetition, the Novice CPU can resign, finishing effects play for checkmate and resignation too, and the tutorial leads to a Novice match. Please update from Google Play."
+      },
+      "url": "https://play.google.com/store/apps/details?id=com.gungiapp.gungi",
+      "urlLabel": {
+        "ja": "アップデートする",
+        "en": "Update"
+      }
+    },
+    {
       "id": "2026-11-11-released-1.4.2",
       "date": "2026-11-11",
       "start": "2026-11-11T00:00:00+09:00",
@@ -22,7 +83,7 @@
       "id": "2026-11-11-update-1.4.2-ios",
       "date": "2026-11-11",
       "start": "2026-11-11T00:00:00+09:00",
-      "end": "2026-12-11T00:00:00+09:00",
+      "end": "2026-11-13T00:00:00+09:00",
       "platforms": [
         "ios"
       ],

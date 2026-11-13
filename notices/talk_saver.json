@@ -1,6 +1,72 @@
 {
   "notices": [
     {
+      "id": "2026-11-13-released-1.3.3-android",
+      "date": "2026-11-13",
+      "start": "2026-11-13T00:00:00+09:00",
+      "end": "2026-12-12T00:00:00+09:00",
+      "platforms": [
+        "android"
+      ],
+      "minVersion": "1.3.3",
+      "title": {
+        "ja": "アップデートしました（ver 1.3.3）",
+        "en": "Updated to version 1.3.3",
+        "ko": "버전 1.3.3으로 업데이트했습니다",
+        "zh": "已更新至版本 1.3.3",
+        "zh_Hant": "已更新至版本 1.3.3",
+        "id": "Diperbarui ke versi 1.3.3",
+        "th": "อัปเดตเป็นเวอร์ชัน 1.3.3 แล้ว"
+      },
+      "body": {
+        "ja": "ver 1.3.3 を公開しました。\n・ふつうの改行が入ったメッセージを、「読み取れなかった行」として数えてしまうことがなくなりました",
+        "en": "Version 1.3.3 is here.\n• Messages with ordinary line breaks are no longer counted as \"lines that could not be read\"",
+        "ko": "버전 1.3.3을 공개했습니다.\n・일반 줄바꿈이 들어간 메시지를 \"읽지 못한 줄\"로 세던 문제를 수정했습니다",
+        "zh": "版本 1.3.3 已發布。\n・修正一般換行的訊息被計為「無法讀取的行」的問題",
+        "zh_Hant": "版本 1.3.3 已發布。\n・修正一般換行的訊息被計為「無法讀取的行」的問題",
+        "id": "Versi 1.3.3 telah dirilis.\n• Pesan dengan jeda baris biasa tidak lagi dihitung sebagai \"baris yang tidak bisa dibaca\"",
+        "th": "เปิดตัวเวอร์ชัน 1.3.3 แล้ว\n• ข้อความที่มีการขึ้นบรรทัดใหม่ปกติจะไม่ถูกนับเป็น \"บรรทัดที่อ่านไม่ได้\" อีกต่อไป"
+      }
+    },
+    {
+      "id": "2026-11-13-update-1.3.3-android",
+      "date": "2026-11-13",
+      "start": "2026-11-13T00:00:00+09:00",
+      "end": "2026-12-12T00:00:00+09:00",
+      "platforms": [
+        "android"
+      ],
+      "maxVersion": "1.3.2",
+      "title": {
+        "ja": "新しいバージョン(1.3.3)を公開しました",
+        "en": "Version 1.3.3 is out",
+        "ko": "새 버전(1.3.3)을 공개했습니다",
+        "zh": "新版本(1.3.3)已發布",
+        "zh_Hant": "新版本(1.3.3)已發布",
+        "id": "Versi baru (1.3.3) telah dirilis",
+        "th": "เปิดตัวเวอร์ชันใหม่ (1.3.3) แล้ว"
+      },
+      "body": {
+        "ja": "共有の画面とホーム画面でのアプリの名前を直し、ふつうの改行が入ったメッセージを「読み取れなかった行」と数えてしまう誤りもなくしました。ぜひアップデートしてお使いください。",
+        "en": "We fixed the app name in the share sheet and on the Home Screen, and messages with ordinary line breaks are no longer counted as \"lines that could not be read\". Please update to try it out.",
+        "ko": "공유 화면과 홈 화면의 앱 이름을 수정하고, 일반 줄바꿈이 들어간 메시지를 \"읽지 못한 줄\"로 세던 오류도 고쳤습니다. 업데이트해서 사용해 주세요.",
+        "zh": "修正了分享畫面與主畫面上的App名稱，也修正一般換行的訊息被計為「無法讀取的行」的問題。歡迎更新後使用。",
+        "zh_Hant": "修正了分享畫面與主畫面上的App名稱，也修正一般換行的訊息被計為「無法讀取的行」的問題。歡迎更新後使用。",
+        "id": "Kami memperbaiki nama aplikasi di layar berbagi dan Layar Utama, dan pesan dengan jeda baris biasa tidak lagi dihitung sebagai \"baris yang tidak bisa dibaca\". Silakan perbarui aplikasi.",
+        "th": "เราแก้ไขชื่อแอปในหน้าจอแชร์และหน้าจอโฮม และข้อความที่มีการขึ้นบรรทัดใหม่ปกติจะไม่ถูกนับเป็น \"บรรทัดที่อ่านไม่ได้\" อีกต่อไป อัปเดตแล้วลองใช้ได้เลย"
+      },
+      "url": "https://play.google.com/store/apps/details?id=com.yousaku.line_talk_saver",
+      "urlLabel": {
+        "ja": "アップデートする",
+        "en": "Update",
+        "ko": "Google Play에서 업데이트",
+        "zh": "在Google Play更新",
+        "zh_Hant": "在Google Play更新",
+        "id": "Perbarui di Google Play",
+        "th": "อัปเดตใน Google Play"
+      }
+    },
+    {
       "id": "2026-11-12-released-1.3.3-ios",
       "date": "2026-11-12",
       "start": "2026-11-12T00:00:00+09:00",

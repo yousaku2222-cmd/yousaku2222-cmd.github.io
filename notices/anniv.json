@@ -1,6 +1,47 @@
 {
   "notices": [
     {
+      "id": "2026-11-13-released-1.2.1-android",
+      "date": "2026-11-13",
+      "start": "2026-11-13T00:00:00+09:00",
+      "end": "2026-12-12T00:00:00+09:00",
+      "platforms": [
+        "android"
+      ],
+      "minVersion": "1.2.1",
+      "title": {
+        "ja": "アップデートしました（ver 1.2.1）",
+        "en": "Anniv 1.2.1 is here"
+      },
+      "body": {
+        "ja": "ver 1.2.1 を公開しました。\n\n【はじめて開くとき】\n・最初に「最初の記念日を登録する」か「サンプルを見てみる」かを選べます。通知の許可は、記念日を保存するときにたずねます\n・最初の1件を保存すると、ホーム画面ウィジェットの置き方を案内します\n\n【広告】\n・広告を見ずに登録できる記念日が、4件から10件までになりました（11個目からは、保存のときに広告を見るか、「広告を除去する」（買い切り）を購入します）\n・サンプルを選んだだけで、1件目から広告が出ることはなくなりました\n\n【そのほか】\n・何もしなかったボタンと、効かなかった設定（表示形式・週の開始曜日）を外しました",
+        "en": "Anniv 1.2.1 is here.\n\n[First launch]\n- Choose \"Add your first date\" or \"Look at some samples\". The notification permission is asked only when you save a date.\n- After you save your first date, the app shows how to put the widget on your Home Screen.\n\n[Ads]\n- You can now save up to 10 dates without watching an ad (it was 4). From the 11th, saving asks you to watch a video ad, or you can buy Remove Ads.\n- Choosing the samples no longer shows ads from your first date.\n\n[Also]\n- Removed a button that did nothing, and two settings that had no effect (display format, first day of the week)."
+      }
+    },
+    {
+      "id": "2026-11-13-update-1.2.1-android",
+      "date": "2026-11-13",
+      "start": "2026-11-13T00:00:00+09:00",
+      "end": "2026-12-12T00:00:00+09:00",
+      "platforms": [
+        "android"
+      ],
+      "maxVersion": "1.2.0",
+      "title": {
+        "ja": "新しい版（ver 1.2.1）が出ました",
+        "en": "A new version (ver 1.2.1) is out"
+      },
+      "body": {
+        "ja": "広告を見ずに登録できる記念日が、4件から10件までになりました。サンプルを選んだだけで広告が出ることもなくなりました。Google Play からアップデートしてください。",
+        "en": "You can now save up to 10 dates without watching an ad (it was 4), and choosing the samples no longer shows ads. Please update from Google Play."
+      },
+      "url": "https://play.google.com/store/apps/details?id=com.annivapp.anniv",
+      "urlLabel": {
+        "ja": "アップデートする",
+        "en": "Update"
+      }
+    },
+    {
       "id": "2026-11-12-released-1.2.1-ios",
       "date": "2026-11-12",
       "start": "2026-11-12T00:00:00+09:00",

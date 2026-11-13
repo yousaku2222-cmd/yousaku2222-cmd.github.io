@@ -1,6 +1,67 @@
 {
   "notices": [
     {
+      "id": "2026-11-13-released-1.1.6",
+      "date": "2026-11-13",
+      "start": "2026-11-13T00:00:00+09:00",
+      "end": "2026-12-13T00:00:00+09:00",
+      "minVersion": "1.1.6",
+      "title": {
+        "ja": "アップデートしました（ver 1.1.6）",
+        "en": "Updated to ver 1.1.6"
+      },
+      "body": {
+        "ja": "一人用の百鬼行脚が、もっと遊びごたえのあるモードになりました。\n・茶屋で「おみくじ」が引けます。大吉なら極の御守がもらえることがあり、凶なら祟りを背負います。同じ茶屋で引くたびに値段が上がります\n・茶屋で銭を払うと、御守を強い「改」に研げます（一部の御守は研げません）\n・御守がいっぱいのときの報酬に「研ぎ札」が出ることがあります\n・銭の数え上げと小判、関所のボスを討つと判子、黙って効く御守が光る演出を加えました\n・倒れた画面に「同じキャラでもう一度」と自己ベストが出ます\n\n【ver 1.1.5 の変更】\n・百鬼行脚が、ホーム画面の一番上になりました。ランク戦と友達と対戦は横に並べました\n・百鬼行脚は、最下位と同点のときは突破になります\n・はじめての方は、CPUの強さを選ぶまで最初の3局だけCPUがやさしくなります。毎日のお題の対局は2回になりました\n・アプリをよくするため、遊ばれ方の統計を取り始めました",
+        "en": "Hyakki Angya, the solo mode, now has more to do with your Zeni.\n- Draw a Fortune at the Teahouse. Great Luck can bring a Legendary Charm, Bad Luck brings a Curse. The price goes up with each draw in the same Teahouse.\n- Pay Zeni at the Teahouse to Hone a Charm into a stronger version (some Charms cannot be honed).\n- A Hone Token may appear as a reward when your Charms are full.\n- New effects: Zeni counting with Koban, a seal when you slay a Gate boss, and a glow when a passive Charm takes effect.\n- After a loss, try again with the same character and see your best floor.\n\n[Ver 1.1.5 changes]\n- Hyakki Angya is now at the top of the home screen, with Ranked match and Play with friends side by side.\n- Hyakki Angya: tying with the last place now counts as clearing the floor.\n- New players get gentler CPUs for their first 3 matches until they pick a CPU level. The daily task now asks for 2 matches.\n- To improve the app, we now collect play statistics."
+      }
+    },
+    {
+      "id": "2026-11-13-update-1.1.6-ios",
+      "date": "2026-11-13",
+      "start": "2026-11-13T00:00:00+09:00",
+      "end": "2026-12-13T00:00:00+09:00",
+      "platforms": [
+        "ios"
+      ],
+      "maxVersion": "1.1.5",
+      "title": {
+        "ja": "新しい版（ver 1.1.6）が出ました",
+        "en": "Ver 1.1.6 is out"
+      },
+      "body": {
+        "ja": "百鬼行脚に、茶屋のおみくじと御守の研ぎを加えました。銭の数え上げなどの演出や、倒れた画面の「同じキャラでもう一度」も入っています。App Store からアップデートしてください。",
+        "en": "Hyakki Angya now has Fortunes and Honing at the Teahouse, new effects, and an \"Again, same character\" button after a loss. Please update from the App Store."
+      },
+      "url": "https://apps.apple.com/jp/app/id6817762455",
+      "urlLabel": {
+        "ja": "アップデートする",
+        "en": "Update"
+      }
+    },
+    {
+      "id": "2026-11-13-update-1.1.6-android",
+      "date": "2026-11-13",
+      "start": "2026-11-13T00:00:00+09:00",
+      "end": "2026-12-13T00:00:00+09:00",
+      "platforms": [
+        "android"
+      ],
+      "maxVersion": "1.1.5",
+      "title": {
+        "ja": "新しい版（ver 1.1.6）が出ました",
+        "en": "Ver 1.1.6 is out"
+      },
+      "body": {
+        "ja": "百鬼行脚に、茶屋のおみくじと御守の研ぎを加えました。銭の数え上げなどの演出や、倒れた画面の「同じキャラでもう一度」も入っています。Google Play からアップデートしてください。",
+        "en": "Hyakki Angya now has Fortunes and Honing at the Teahouse, new effects, and an \"Again, same character\" button after a loss. Please update from Google Play."
+      },
+      "url": "https://play.google.com/store/apps/details?id=com.jutsufudaapp.jutsufuda",
+      "urlLabel": {
+        "ja": "アップデートする",
+        "en": "Update"
+      }
+    },
+    {
       "id": "2026-11-06-released-1.1.4",
       "date": "2026-11-06",
       "start": "2026-11-06T00:00:00+09:00",
@@ -19,7 +80,7 @@
       "id": "2026-11-06-update-1.1.4-ios",
       "date": "2026-11-06",
       "start": "2026-11-06T00:00:00+09:00",
-      "end": "2026-12-06T00:00:00+09:00",
+      "end": "2026-11-13T00:00:00+09:00",
       "platforms": [
         "ios"
       ],
@@ -58,7 +119,7 @@
         "ja": "毎日のお題・ログインボーナス・実績・番付と、ショップの新しい品39品を加えました。App Store からアップデートしてください。"
       },
       "start": "2026-10-26T00:00:00+09:00",
-      "end": "2026-11-26T00:00:00+09:00",
+      "end": "2026-11-13T00:00:00+09:00",
       "platforms": [
         "ios"
       ],
