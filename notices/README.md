@@ -48,5 +48,7 @@
 | `url` / `urlLabel` | | ダイアログにリンクボタンを出す。ラベル省略時は「詳しく見る」 |
 | `popup` | | `false` で起動時ダイアログを出さず一覧だけに載せる。省略時 `true` |
 
+released-*（公開のお知らせ）は `popup: false` で書く。初めて入れた人の初回起動で ATT などと重なって窓が出るため。
+
 言語は 端末の言語（`zh_Hant` → `zh`）→ `ja` → `en` の順に探す。
 JSON が壊れていると**そのアプリのお知らせが全部出なくなる**ので、push 前に `node -e "JSON.parse(require('fs').readFileSync('notices/xxx.json','utf8'))"` などで確認する。

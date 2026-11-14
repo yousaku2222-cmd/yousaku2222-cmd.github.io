@@ -9,6 +9,7 @@
         "ios"
       ],
       "minVersion": "1.1.3",
+      "popup": false,
       "title": {
         "ja": "アップデートしました（ver 1.1.3）"
       },
