@@ -205,6 +205,36 @@
       "urlLabel": "Google Playで見る"
     },
     {
+      "id": "2026-12-01-season2-open",
+      "date": "2026-12-01",
+      "start": "2026-12-01T00:00:00+09:00",
+      "end": "2026-12-15T00:00:00+09:00",
+      "minVersion": "1.1.0",
+      "title": {
+        "ja": "第2期「雪月の陣」開幕",
+        "en": "Season 2 \"Snow Moon Campaign\" has begun"
+      },
+      "body": {
+        "ja": "シーズンパス第2期「雪月の陣」が始まりました（2月28日まで）。\nホームの「シーズンパス」から、段の報酬を受け取れます。この期だけの品は、期が終わると手に入らなくなります。",
+        "en": "Season 2 of the Season Pass, \"Snow Moon Campaign\", has begun (until February 28).\nClaim tier rewards from \"Season Pass\" on the home screen. Items from this season can no longer be obtained once it ends."
+      }
+    },
+    {
+      "id": "2026-12-01-season2-open-old",
+      "date": "2026-12-01",
+      "start": "2026-12-01T00:00:00+09:00",
+      "end": "2026-12-15T00:00:00+09:00",
+      "maxVersion": "1.0.9",
+      "title": {
+        "ja": "第2期「雪月の陣」開幕",
+        "en": "Season 2 \"Snow Moon Campaign\" has begun"
+      },
+      "body": {
+        "ja": "シーズンパス第2期「雪月の陣」が始まりました（2月28日まで）。\n第2期は ver 1.1.0 から遊べます。ストアから最新版に更新してください。この期だけの品は、期が終わると手に入らなくなります。",
+        "en": "Season 2 of the Season Pass, \"Snow Moon Campaign\", has begun (until February 28).\nSeason 2 requires ver 1.1.0 or later. Please update from the store. Items from this season can no longer be obtained once it ends."
+      }
+    },
+    {
       "id": "2026-11-01-season1-open",
       "date": "2026-11-01",
       "start": "2026-11-01T00:00:00+09:00",
